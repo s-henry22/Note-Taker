@@ -10,7 +10,12 @@ function filterByQuery(query, notesArray) {
         filteredResults = filteredResults.filter(note => note.name === query.name);
     }
     return filteredResults;
-}
+};
+
+function findById(id, notesArray) {
+    const result = notesArray.filter(note => note.id ===id) [0];
+    return result;
+};
 
 // Adding API route
 app.get('/api/notes', (req, res) => {
@@ -19,6 +24,16 @@ app.get('/api/notes', (req, res) => {
         results = filterByQuery(req.query, results);
     }
     res.json(results);
+});
+
+// Will return a 404 error if the task does not exist
+app.get('/api/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }  
 });
 
 app.listen(PORT, () => {
