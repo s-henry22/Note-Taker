@@ -1,0 +1,29 @@
+{
+  "notes": [
+    {
+      "id": "0",
+      "name": "clients",
+      "description": "Follow up with clients."
+    },
+    {
+      "id": "1",
+      "name": "inventory",
+      "description": "Buy more inventory."
+    },
+    {
+      "id": "2",
+      "name": "Bank",
+      "description": "Go to the bank."
+    },
+    {
+      "name": "Payroll",
+      "description": "Complete payroll.",
+      "id": "3"
+    },
+    {
+      "name": "House",
+      "description": "Complete payroll.",
+      "id": "4"
+    }
+  ]
+}
