@@ -4,6 +4,8 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
+app.use(express.static('public'));
+
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -60,6 +62,21 @@ app.get('/api/notes/:id', (req, res) => {
         res.send(404);
     }  
 });
+
+// Navigate to homepage
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// Route for notes page
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+// Revert back to homepage if invalid route
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public'))
+})
 
 app.post('/api/notes', (req, res) => {
     // set id based on what the next index of the array will be
