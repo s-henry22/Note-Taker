@@ -44,6 +44,11 @@ function validateNote (note) {
     return true;
 }
 
+// Navigate to homepage
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 // Adding API route
 app.get('/api/notes', (req, res) => {
     let results = notes;
@@ -61,11 +66,6 @@ app.get('/api/notes/:id', (req, res) => {
     } else {
         res.send(404);
     }  
-});
-
-// Navigate to homepage
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // Route for notes page
