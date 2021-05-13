@@ -49,6 +49,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+// Route for notes page
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
 // Adding API route
 app.get('/api/notes', (req, res) => {
     let results = notes;
@@ -66,11 +71,6 @@ app.get('/api/notes/:id', (req, res) => {
     } else {
         res.send(404);
     }  
-});
-
-// Route for notes page
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 // Revert back to homepage if invalid route
